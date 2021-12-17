@@ -12,7 +12,7 @@
     "build-files": "copyfiles -u 0 src/views/*.html dist/",
     "build": "npm run tsc",
     "watch": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"tsc\"",
-    "start-dev": "npm run build && nodemon dist/src/app",
+    "start-dev": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec dist/src/app",
     "build-run": "tsc && npm start",
     "test": "NODE_ENV=test jest"
   },

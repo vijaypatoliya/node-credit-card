@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "919ef841-4ee6-4517-b1c4-dfbf2522f381",
+		"name": "User-Cred",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{NAME}}\",\n    \"email\": \"{{EMAIL}}\",\n    \"password\": \"{{PASSWORD}}\",\n    \"age\": \"{{AGE}}\",\n    \"type\": \"{{CHILD | PARENT}}\",\n    \"parentId\": \"{{parent-user-id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{x-access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "localhost:3000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{email}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/{{id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{x-access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "localhost:3000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/{{id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{x-access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "localhost:3000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/{{id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CRED",
+			"item": [
+				{
+					"name": "Add CRED",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{PARENT-USER-X-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"credId\": \"{{CREDIT-CARD-ID}}\",\n    \"type\": \"{{CREDIT-CARD-TYPE}}\",\n    \"cardNumber\": \"{{CREDIT-CARD-NUMBER}}\",\n    \"securityCode\": \"{{CREDIT-CARD-SECURITY-CODE}}\",\n    \"expiryDate\": \"{{MM-DD-YYYY}}\",\n    \"limit\": \"{{CREDIT-CARD-LIMIT}}\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/cred/{{CHILD-USER-ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"cred",
+								"{{CHILD-USER-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update CRED",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{PARENT-USER-X-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"credId\": \"{{CREDIT-CARD-CREDID}}\",\n    \"credType\": \"{{CREDIT-CARD-TYPE}}\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/cred/{{id}}/{{CHILD-USER-ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"cred",
+								"{{id}}",
+								"{{CHILD-USER-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get CRED",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{PARENT-USER-X-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/cred/{{id}}/{{CHILD-USER-ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"cred",
+								"{{id}}",
+								"{{CHILD-USER-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete CRED",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{PARENT-USER-X-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/cred/{{id}}/{{CHILD-USER-ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"cred",
+								"{{id}}",
+								"{{CHILD-USER-ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
